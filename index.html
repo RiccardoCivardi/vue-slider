@@ -29,7 +29,10 @@
 
     <div class="main-wrapper d-flex flex-column justify-content-center align-items-center">
     
-      <div class="carousel">
+      <!-- @dblclick="isStop = !isStop" al doppio click sul carosello isStop cambia il suo valore per fermare o riattivare nextPrev del setInterval -->
+      <div 
+      @dblclick="isStop = !isStop"
+      class="carousel">
   
         <div class="slider">
   

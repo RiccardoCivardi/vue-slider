@@ -2,10 +2,7 @@
 
 1- applicare l’autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente
 2- quando il mouse va in hover sullo slider, bloccare l’autoplay e farlo riprendere quando esce
-Consigli del giorno:
-- regola d’oro: riciclare ovunque possibile! Questo significa che per la parte di markup possiamo recuperare html e css dell’esercizio svolto qualche giorno fa: è già tutto pronto!
-- il riciclo spesso va a braccetto con le funzioni! Sapendole sfruttare bene, l’esercizio si riduce a poche righe ;)
-Buon lavoro e buon divertimento!
+ lavoro e buon divertimento!
 */
 
 
@@ -44,7 +41,10 @@ createApp({
         }
       ],
 
-      counter: 0
+      counter: 0,
+      isForward: true,
+      isStop: false
+
 
     }
   },
@@ -57,12 +57,24 @@ createApp({
       // condizioni per loop infinito 
       if(this.counter < 0) this.counter = this.images.length - 1;
       if(this.counter === this.images.length) this.counter = 0;
+    },
+
+    // funzione autoplay che contiene il setinterval che a sua volta lancia nextprev con l'arrow function
+    // passo il data ilForward per avere il controllo sul senso di scorrimento
+    autoplay(){
+      setInterval(() => {
+        // condizione per lanciare la funzione (stop con doppio click)
+        if(!this.isStop) this.nextPrev(this.isForward);
+      },3000)
     }
 
   },
 
+  // APP MONTATA 
   mounted(){
-    
+
+    // lancio la funzione autoplay 
+    this.autoplay();
   }
 
 }).mount('#app');
