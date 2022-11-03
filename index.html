@@ -30,11 +30,15 @@
     <div class="main-wrapper d-flex flex-column justify-content-center align-items-center">
     
       <!-- @dblclick="isStop = !isStop" al doppio click sul carosello isStop cambia il suo valore per fermare o riattivare nextPrev del setInterval -->
-      <div 
-      @dblclick="isStop = !isStop"
-      class="carousel">
+      <div class="carousel">
   
-        <div class="slider">
+         <!-- @dblclick="isStop = !isStop" al doppio click sul carosello isStop cambia il suo valore per fermare o riattivare nextPrev del setInterval -->
+         <!-- @click="isForward = !isForward" al click cambia senso di marcia -->
+         <!-- le posso usare in combo -->
+        <div 
+        @dblclick="isStop = !isStop"
+        @click="isForward = !isForward"
+        class="slider">
   
           <div 
           v-for="(image, index) in images"
@@ -60,7 +64,11 @@
   
         </div>
   
-        <div class="thumbnails-container d-flex">
+        <!-- all'hover del mouse fermo l'autoplay gestendo ingresso e uscita, assegno true e false o vado in conflitto con lo stop al doppio click -->
+        <div 
+        @mouseenter="isStop = true"
+        @mouseleave="isStop = false"
+        class="thumbnails-container d-flex">
 
           <!-- @click="counter = index" serve per vedere l'immagine giusta cliccando la thumbnails -->
           <div 
