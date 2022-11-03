@@ -33,28 +33,40 @@
   
         <div class="slider">
   
-          <div class="slider-image active">
+          <div 
+          v-for="(image, index) in images"
+          class="slider-image"
+          :class="{'active': index === counter}"
+          >
 
-            <img class="image" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="Svezia">
-            
+            <img class="image" :src="image.url" :alt="image.title">
+
             <div class="text">
-              <h3 class="title">SVEZIA</h3>
-              <p class="description">Una vita senza amore è come un anno senza estate</p>
+              <h3 class="title">{{image.title}}</h3>
+              <p class="description">{{image.description}}</p>
             </div>
             
           </div>
   
           <div class="arrows d-flex justify-content-between align-items-center">
-            <i id="prev" class="fa-solid fa-arrow-left"></i>
-            <i id="next" class="fa-solid fa-arrow-right"></i>
+
+            <i @click="nextPrev(false)" class="fa-solid fa-arrow-left"></i>
+            <i @click="nextPrev(true)" class="fa-solid fa-arrow-right"></i>
+
           </div>
   
         </div>
   
         <div class="thumbnails-container d-flex">
 
-          <div id="0" class="thumbnail-container active">
-            <img class="thumbnail" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="Svezia">
+          <!-- @click="counter = index" serve per vedere l'immagine giusta cliccando la thumbnails -->
+          <div 
+          v-for="(image, index) in images"
+          @click="counter = index"
+          class="thumbnail-container"
+          :class="{'active': index === counter}"
+          >
+            <img class="thumbnail" :class="{'active': index === counter}" :src="image.url" :alt="image.title">
           </div>
 
         </div>
