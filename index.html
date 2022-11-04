@@ -29,7 +29,6 @@
 
     <div class="main-wrapper d-flex flex-column justify-content-center align-items-center">
     
-      <!-- @dblclick="isStop = !isStop" al doppio click sul carosello isStop cambia il suo valore per fermare o riattivare nextPrev del setInterval -->
       <div class="carousel">
   
          <!-- @dblclick="isStop = !isStop" al doppio click sul carosello isStop cambia il suo valore per fermare o riattivare nextPrev del setInterval -->
@@ -57,8 +56,8 @@
   
           <div class="arrows d-flex justify-content-between align-items-center">
 
-            <i @click="nextPrev(false)" class="fa-solid fa-arrow-left"></i>
-            <i @click="nextPrev(true)" class="fa-solid fa-arrow-right"></i>
+            <i @click.stop="nextPrev(false)" class="fa-solid fa-arrow-left"></i>
+            <i @click.stop="nextPrev(true)" class="fa-solid fa-arrow-right"></i>
 
           </div>
   
